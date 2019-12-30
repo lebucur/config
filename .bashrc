@@ -7,4 +7,5 @@
 
 export HISTCONTROL="ignorespace:ignoredups"
 export HISTIGNORE="history:ls"
+export HISTSIZE=10000
 
