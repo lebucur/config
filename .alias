@@ -17,9 +17,11 @@ alias tre=tree
 
 alias a=./a.out
 
-alias src-alias='source ~/.bash_aliases'
+alias le=less
+
+alias src-alias='source ~/.alias'
 alias sra=src-alias
-alias cat-alias='cat ~/.bash_aliases'
+alias cat-alias='cat ~/.alias'
 
 alias ..='cd ..'
 alias ...='cd ../..'
