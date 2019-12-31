@@ -61,7 +61,6 @@ set ruler
 set undolevels=1000 
 set backspace=indent,eol,start 
 
-<<<<<<< HEAD
 "nnoremap n :call HighlightNearCursor()<CR> n 
 "nnoremap N N :call HighlightNearCursor()<CR>
 nnoremap t :call HighlightWordNearCursor()<CR>
