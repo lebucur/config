@@ -50,6 +50,7 @@ set nocompatible
 set autoindent	
 set cindent	
 set expandtab	
+inoremap <S-Tab> <C-V><Tab>
 set shiftwidth=4 
 set smartindent	
 set smarttab	
@@ -60,6 +61,7 @@ set ruler
 set undolevels=1000 
 set backspace=indent,eol,start 
 
+<<<<<<< HEAD
 "nnoremap n :call HighlightNearCursor()<CR> n 
 "nnoremap N N :call HighlightNearCursor()<CR>
 nnoremap t :call HighlightWordNearCursor()<CR>
