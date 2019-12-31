@@ -1,8 +1,14 @@
 alias tmx=tmux
+alias clr=clear
 
-alias l=ls
-alias ll="ls -l"
-alias la="ls -A"
-alias lla="ls -la"
+alias ..='cd ..'
+
+alias le=less
+alias sra="source ~/.alias"
+
+alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -alF'
 
 alias xx=exit
