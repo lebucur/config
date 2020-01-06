@@ -1,49 +1,58 @@
+#source
+alias sra='source ~/.alias'
 
+#launch
 alias tmx=tmux
-alias tmx-at='tmux at -t 0'
-
 alias gi=git
-
 alias vi=vim
-
-alias l='ls'
-alias ll="ls -lh"
-alias la="ls -A"
-alias lla="ls -la"
-alias llf="ls -la |grep -i"
-alias lsdir="ls -R"
-alias lsr="ls -R"
-alias tre=tree
-
-alias a=./a.out
-
 alias le=less
 
-alias src-alias='source ~/.alias'
-alias sra=src-alias
-alias cat-alias='cat ~/.alias'
+#list
+alias ls='ls --color=auto --classify'
+alias l=ls
+alias la='ls -A'
+alias ll='ls --format=long --human-readable'
+alias lla='ls --format=long --all --human-readable'
 
+#navigate
 alias ..='cd ..'
 alias ...='cd ../..'
 alias r='cd ..; cd -'
 
+#help
 alias mank='man -k'
+alias info='info --vi-keys'
 
+#console
 alias clr=clear
 alias xx=exit
 
+#processes
 alias pscpu='ps auxf | sort -nr -k 3 | head -10'
 alias psmem='ps auxf | sort -nr -k 4 | head -10'
 
-alias grepp="grep -Rnsi --color"
+#find
+alias grepp='grep -Rnsi --color'
+alias llg='ll | grep --ignore-case --color=auto'
 
-alias sys-sii="clear; journalctl -xe |grep sii-ctrl --color"
+#build
+alias make='clear; make'
+alias a=./a.out
 
-alias make="clear; make"
+#functions
 
 findf() 
 {
-    find 2>&1 -iname "*$1*" ${@:2} | grep -v "Permission denied"
+    find 2>&1 -iname '*$1*' ${@:2} | grep -v 'Permission denied'
+}
+
+hi()
+{
+    if [ '$1' != '' ]; then
+        history | grep $1
+    else
+        history | less
+    fi
 }
 
 weather() 
@@ -60,7 +69,6 @@ man() {
     LESS_TERMCAP_so=$'\e[46;30m' \
     LESS_TERMCAP_ue=$'\e[0m' \
     LESS_TERMCAP_us=$'\e[04;38;5;146m' \
-    man "$@"
+    man '$@'
 }
-
 
