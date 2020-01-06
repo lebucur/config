@@ -1,5 +1,6 @@
-#source
+#alias
 alias sra='source ~/.alias'
+alias allias='alias | grep $1'
 
 #launch
 alias tmx=tmux
@@ -25,6 +26,7 @@ alias info='info --vi-keys'
 
 #console
 alias clr=clear
+alias c=clear
 alias xx=exit
 
 #processes
@@ -69,6 +71,6 @@ man() {
     LESS_TERMCAP_so=$'\e[46;30m' \
     LESS_TERMCAP_ue=$'\e[0m' \
     LESS_TERMCAP_us=$'\e[04;38;5;146m' \
-    man '$@'
+    man "$@"
 }
 
