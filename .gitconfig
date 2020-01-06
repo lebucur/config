@@ -3,7 +3,7 @@
     email = loredan.bucur@siiromania.ro
 
 [credential]
-    helper = store
+	helper = store
 
 [alias]
     #short status
