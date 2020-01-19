@@ -1,3 +1,5 @@
+alias count='find . -type f | wc -l'
+alias sortdirs='du --human-readable --total --summarize | sort --human-numeric-sort --reverse'
 
 alias tmx=tmux
 alias tmx-at='tmux at -t 0'
