@@ -7,6 +7,7 @@ alias tmx=tmux
 alias gi=git
 alias vi=vim
 alias le=less
+alias py=python3
 
 #list
 alias ls='ls --color=auto --classify'
