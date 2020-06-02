@@ -1,5 +1,6 @@
 #alias
 alias sra='source ~/.alias'
+alias edita='vi ~/.alias'
 alias allias='alias | grep $1'
 
 #launch
@@ -8,11 +9,10 @@ alias gi=git
 alias vi=vim
 alias le=less
 alias py=python3
-alias tl='~/.local/bin/tldr'
-alias tld='/usr/bin/tldr'
+alias tl='~/.local/bin/tldr' #interactive tldr++
+alias tld='/usr/bin/tldr'    #tldr from apt
 
 #list
-alias ls='ls --color=auto --classify'
 alias l=ls
 alias la='ls -A'
 alias ll='ls --format=long --human-readable'
@@ -24,7 +24,6 @@ alias ...='cd ../..'
 alias r='cd ..; cd -'
 
 #help
-alias mank='man -k'
 alias info='info --vi-keys'
 
 #console
@@ -38,14 +37,12 @@ alias psmem='ps auxf | sort -nr -k 4 | head -10'
 
 #find
 alias grepp='grep -Rnsi --color'
-alias llg='ll | grep --ignore-case --color=auto'
+alias here='lla | grep --ignore-case --color=auto'
 
 #build
-alias make='clear; make'
 alias a=./a.out
 
 #functions
-
 findf() 
 {
     find 2>&1 -iname '*$1*' ${@:2} | grep -v 'Permission denied'
