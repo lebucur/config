@@ -8,6 +8,8 @@ alias gi=git
 alias vi=vim
 alias le=less
 alias py=python3
+alias tl='~/.local/bin/tldr'
+alias tld='/usr/bin/tldr'
 
 #list
 alias ls='ls --color=auto --classify'
