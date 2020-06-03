@@ -3,8 +3,11 @@ alias sra='source ~/.alias'
 alias edita='vi ~/.alias'
 alias allias='alias | grep $1'
 
+alias uninstall='sudo apt remove --purge'
+
 #launch
 alias tmx=tmux
+alias clip=xclip
 alias gi=git
 alias vi=vim
 alias le=less
