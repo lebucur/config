@@ -1,5 +1,5 @@
 # alias file name
-sed -i 's/.bash_aliases/.alias/g' ~/.bashrc
+#sed -i 's/.bash_aliases/.alias/g' ~/.bashrc
  
 # links
 ln -sv config/.alias
@@ -7,12 +7,9 @@ ln -sv config/.vimrc
 ln -sv config/.tmux.conf
 ln -sv config/.gitconfig
 
-# source needed scripts
-source ~/.bashrc
-
 # first
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
  
 # packages
 sudo apt install gcc
@@ -21,9 +18,9 @@ sudo apt install python3-pip
 sudo apt install tree
                 
 # repositories
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/cheat/cheatsheets ~/.cheat
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#git clone https://github.com/cheat/cheatsheets ~/.cheat
 
 # # # TLDR and TLDR++ # # #
 sudo apt install tldr
@@ -40,8 +37,9 @@ wget "https://github.com${TLDR_PATH}"
 TLDR_FILE=$(echo ${TLDR_PATH} | cut -d "/" -f7)
 # extract the gzipped archive
 tar xzf $TLDR_FILE
+rm -f $TLDR_FILE
 #install
-~/tldr
+#~/tldr
 # # # Done # # #
 
 # pip helpers
@@ -50,7 +48,10 @@ sudo pip3 install eg
 sudo pip3 install manly
 
 # dir structure template
-mkdir ~/dev
-mkdir ~/dev/c
-mkdir ~/dev/py
+#mkdir ~/dev
+#mkdir ~/dev/c
+#mkdir ~/dev/py
+
+# source needed scripts
+source ~/.bashrc
 
