@@ -14,6 +14,8 @@ alias le=less
 alias py=python3
 alias tl='~/.local/bin/tldr' #interactive tldr++
 alias tld='/usr/bin/tldr'    #tldr from apt
+alias mkdir='mkdir --parents --verbose'
+alias tree='tree -n'         #no colors
 
 #list
 alias l=ls

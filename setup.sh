@@ -5,10 +5,11 @@ mkdir ~/setup; cd ~/setup
 sed -i 's/.bash_aliases/.alias/g' ~/.bashrc 2>&1 | tee -a sed-alias
  
 # links
-ln -sv ~/config/.alias     ~ 2>&1 | tee -a lnsv
-ln -sv ~/config/.vimrc     ~ 2>&1 | tee -a lnsv
-ln -sv ~/config/.tmux.conf ~ 2>&1 | tee -a lnsv
-ln -sv ~/config/.gitconfig ~ 2>&1 | tee -a lnsv
+ln -sv ~/config/.alias      ~ 2>&1 | tee -a lnsv
+ln -sv ~/config/.vimrc      ~ 2>&1 | tee -a lnsv
+ln -sv ~/config/.tmux.conf  ~ 2>&1 | tee -a lnsv
+ln -sv ~/config/.gitconfig  ~ 2>&1 | tee -a lnsv
+ln -sv /mnt/c/Users/lebucur ~ 2>&1 | tee -a lnsv
 
 # first
 sudo apt update     2>&1 | tee -a apt-update 
