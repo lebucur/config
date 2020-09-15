@@ -3,7 +3,12 @@ alias sra='source ~/.alias'
 alias edita='vi ~/.alias'
 alias allias='alias | grep $1'
 
+alias update='sudo apt update; sudo apt upgrade' 
+
 alias uninstall='sudo apt remove --purge'
+
+#directory
+alias space='du -sh'
 
 #launch
 alias tmx=tmux
@@ -77,5 +82,13 @@ man() {
     LESS_TERMCAP_ue=$'\e[0m' \
     LESS_TERMCAP_us=$'\e[04;38;5;146m' \
     man "$@"
+}
+
+function cs () {
+    cd "$@" && l
+}
+
+function mk () {
+    mkdir "$@" && cd "$@"
 }
 
