@@ -23,8 +23,8 @@ alias mkdir='mkdir --parents --verbose'
 alias tree='tree -n'         #no colors
 
 #list
-alias l=ls
-alias la='ls -A'
+alias l='ls --color=auto --classify'
+alias la='ls --almost-all'
 alias ll='ls --format=long --human-readable'
 alias lla='ls --format=long --all --human-readable'
 
@@ -32,6 +32,10 @@ alias lla='ls --format=long --all --human-readable'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias r='cd ..; cd -'
+
+#compiler
+alias cc='gcc -Wall'
+alias cl='clang -Weverything'
 
 #help
 alias info='info --vi-keys'
