@@ -237,7 +237,7 @@ set expandtab
 
 "------------------------------------------------------------
 " Mappings {{{1
-"
+" https://medium.com/vim-drops/understand-vim-mappings-and-create-your-own-shortcuts-f52ee4a6b8ed
 " Useful mappings
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
