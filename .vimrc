@@ -31,69 +31,21 @@ set number
 set linebreak	
 set showbreak=+++	
 set textwidth=100	
-set showmatch	
 set virtualedit=all	
-set visualbell 
+set cindent
 
-set hlsearch
-hi Search ctermbg=DarkRed
-hi MatchParen cterm=bold  ctermbg=black ctermfg=white
 
-syntax on
- 
-set smartcase	
-set ignorecase	
-set incsearch	
 
-set nocompatible
 
-set autoindent	
-set cindent	
-set expandtab	
-inoremap <S-Tab> <C-V><Tab>
-set shiftwidth=4 
-set smartindent	
-set smarttab	
-set softtabstop=4
- 
-set ruler	
- 
-set undolevels=1000 
-set backspace=indent,eol,start 
 
-"nnoremap n :call HighlightNearCursor()<CR> n 
-"nnoremap N N :call HighlightNearCursor()<CR>
-nnoremap t :call HighlightWordNearCursor()<CR>
-nnoremap T :set hlsearch!<CR>
+" https://affanindo.github.io/my-vimrc-explained
+" URL: http://vim.wikia.com/wiki/Example_vimrc
 
-function HighlightNearCursor()
-    match Todo /\k*\%#\k*/
-    let s:highlightcursor=1
-endfunction
- 
-function HighlightWordNearCursor()
-   if !exists("s:highlightcursor")
-       match Todo /\k*\%#\k*/
-       let s:highlightcursor=1
-   else
-       match None
-       unlet s:highlightcursor
-   endif
-endfunction
- 
-
-hi CursorLine cterm=NONE ctermbg=52 ctermfg=NONE 
-"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-"set cursorline
+set encoding=utf-8
 
 " Don't try to be vi compatible (must set first)
 set nocompatible
-"
-"------------------------------------------------------------
-"
-"" Mappings {{{1
-"
+
 "" Useful mappings
 let mapleader=","
 let g:mapleader=","
@@ -102,73 +54,50 @@ let g:mapleader=","
 " " which is the default
 map Y y$
 
+"reload file
 :nnoremap <leader>r :e<CR>
+
+"easier to acces ;
 :nnoremap ; :
 
 " Clear search
-nnoremap <leader><space> :let @/=''<cr>
-nnoremap <leader>qq :q!<cr>
-nnoremap <leader>w :x<cr>
-nnoremap <leader>s :w<cr>
+nnoremap <leader>/ :let @/=''<cr>
 
+" quitting vim
+nnoremap <leader>qq :q!<cr>
+nnoremap q :q<cr>
+
+" save
+nnoremap <leader>w :w<cr>
+
+" toggle relativenumber
 nnoremap <leader>n :set relativenumber!<CR>
 
+" toggle paste/put
 set pastetoggle=<leader>p
 
+" ????
+set history=1000
+
+" Number of undo levels
+set undolevels=1000
+
+" Display extra whitespace
+"set list listchars=tab:>.,trail:~,nbsp:<
+
+" reload the config file
 nnoremap <leader>v :source ~/.vimrc<CR>
 
-"------------------------------------------------------------
-"
-"
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
+" move vim to background, giving access to the old Shell
+" come back with fg command
+nnoremap <leader>h :suspend<CR>
 
-"------------------------------------------------------------
-" Features {{{1
-"
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
-
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-filetype indent plugin on
+" for wrapped lines, it will consider those
+nnoremap j gj
+nnoremap k gk
 
 " Enable syntax highlighting
 syntax on
-
-set encoding=utf-8
-
-
-"------------------------------------------------------------
-" Must have options {{{1
-"
-" These are highly recommended options.
-
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
-set hidden
-
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
 
 " Better command-line completion
 set wildmenu
@@ -176,23 +105,11 @@ set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
 
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
+" Highlight searches 
 set hlsearch
 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
-
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
+"search while typing
+set incsearch
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -217,18 +134,18 @@ set ruler
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
-" Now set it up to change the status line based on mode
-"if version >= 700
-"   au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl  guisp=Magenta
-"   au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2      gui=bold,reverse
-"endif
+"highlight current line
+:hi CursorLine cterm=NONE ctermbg=black guibg=darkred guifg=white
+
+"toggle hi current line
+:nnoremap <Leader>c :set cursorline!<CR>
 
 " status bar colors
 au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
 au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
 hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
 
-" Status line
+" Status line content
 " default: set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
 
 " Status Line Custom
@@ -270,7 +187,7 @@ set statusline+=%3*│                                     " Separator
 set statusline+=%1*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
 
-
+" ??? status line ???
 hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
 hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
 hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
@@ -293,7 +210,7 @@ set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
-set cmdheight=1
+"set cmdheight=2
 
 " Display line numbers on the left
 "set number
@@ -305,6 +222,8 @@ set cmdheight=1
 ":  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 ":augroup END
 
+" Don't redraw while executing macros (performance config)
+set lazyredraw
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -314,8 +233,45 @@ set notimeout ttimeout ttimeoutlen=200
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
 set softtabstop=4
+set smarttab
 set expandtab
+set smartindent
 
+"highlight matching brace
+set showmatch
+
+"You can set this setting with very high number such as 9999 if you prefer the
+"cursor to stay on the middle and the screen that move instead (like in Super
+"Mario Bros lol! The screen move but the Mario still at the center.)
+"highlight matching brace
+" Keep n lines off the edges of the screen when scrolling
+set scrolloff=4
+
+"use %s/foo/bar instead of %s/foo/bar/g
+set gdefault
+
+"wrap lines that are too long
 set wrap
 
 
+
+
+"nnoremap n :call HighlightNearCursor()<CR> n 
+"nnoremap N N :call HighlightNearCursor()<CR>
+nnoremap t :call HighlightWordNearCursor()<CR>
+nnoremap T :set hlsearch!<CR>
+
+function HighlightNearCursor()
+    match Todo /\k*\%#\k*/
+    let s:highlightcursor=1
+endfunction
+ 
+function HighlightWordNearCursor()
+   if !exists("s:highlightcursor")
+       match Todo /\k*\%#\k*/
+       let s:highlightcursor=1
+   else
+       match None
+       unlet s:highlightcursor
+   endif
+endfunction
