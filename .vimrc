@@ -1,92 +1,54 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-
-    "Plugin 'scrooloose/nerdtree'
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    "
-    " see :h vundle for more details or wiki for FAQ
-    " Put your non-Plugin stuff after this line
-
-set number	
-set linebreak	
-set showbreak=+++	
-set textwidth=100	
-set virtualedit=all	
-set cindent
-
-
-
-
-
+" Source:
 " https://affanindo.github.io/my-vimrc-explained
-" URL: http://vim.wikia.com/wiki/Example_vimrc
+" http://vim.wikia.com/wiki/Example_vimrc
 
+" to allow arrow as tab for example
 set encoding=utf-8
 
 " Don't try to be vi compatible (must set first)
 set nocompatible
 
-"" Useful mappings
+" the leader will precede most of the custom mappings
 let mapleader=","
 let g:mapleader=","
 
+" easier Esc
+inoremap <Tab> <Esc>
+noremap <Tab> <Esc>
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " " which is the default
-map Y y$
+noremap Y y$
+noremap - $
 
 "reload file
-:nnoremap <leader>r :e<CR>
+nnoremap <leader>r :e<CR>
+nnoremap <leader>R :e!<CR>
 
 "easier to acces ;
-:nnoremap ; :
+nnoremap ; :
 
 " Clear search
 nnoremap <leader>/ :let @/=''<cr>
 
-" quitting vim
-nnoremap <leader>qq :q!<cr>
+" quit w/o saving
+nnoremap <leader>Q :q!<cr>
+nnoremap ,q :q<cr>
 nnoremap q :q<cr>
 
-" save
+" save/quit
 nnoremap <leader>w :w<cr>
+nnoremap <leader>x :x<cr>
 
 " toggle relativenumber
 nnoremap <leader>n :set relativenumber!<CR>
 
-" toggle paste/put
+" toggle paste
 set pastetoggle=<leader>p
 
-" ????
-set history=1000
-
-" Number of undo levels
-set undolevels=1000
-
-" Display extra whitespace
-"set list listchars=tab:>.,trail:~,nbsp:<
-
 " reload the config file
-nnoremap <leader>v :source ~/.vimrc<CR>
+nnoremap <leader>v :w<CR>:source ~/.vimrc<CR>
 
 " move vim to background, giving access to the old Shell
 " come back with fg command
@@ -96,8 +58,15 @@ nnoremap <leader>h :suspend<CR>
 nnoremap j gj
 nnoremap k gk
 
+"toggle hi current line
+nnoremap <Leader>c :set cursorline!<CR>
+
+"--------------------------------------------------------------------------------
+
 " Enable syntax highlighting
+if v:version > 704
 syntax on
+endif
 
 " Better command-line completion
 set wildmenu
@@ -118,6 +87,15 @@ set smartcase
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
+" ????
+"set history=1000
+
+" Number of undo levels
+set undolevels=1000
+
+" Display extra whitespace
+"set list listchars=tab:>.,trail:~,nbsp:<
+
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
@@ -136,9 +114,7 @@ set laststatus=2
 
 "highlight current line
 :hi CursorLine cterm=NONE ctermbg=black guibg=darkred guifg=white
-
-"toggle hi current line
-:nnoremap <Leader>c :set cursorline!<CR>
+":hi CursorLineNr cterm=NONE term=bold
 
 " status bar colors
 au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
@@ -171,7 +147,6 @@ let g:currentmode={
     \ 't'  : 'Terminal'
     \}
 
-set laststatus=2
 set noshowmode
 set statusline=
 set statusline+=%0*\ %n\                                 " Buffer number
@@ -206,15 +181,15 @@ set visualbell
 set t_vb=
 
 " Enable use of the mouse for all modes
-set mouse=a
+"set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 "set cmdheight=2
 
 " Display line numbers on the left
-"set number
-:set number relativenumber
+set number
+set relativenumber
 
 ":augroup numbertoggle
 ":  autocmd!
@@ -230,11 +205,12 @@ set notimeout ttimeout ttimeoutlen=200
 
 "------------------------------------------------------------
 " Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
 set softtabstop=4
-set smarttab
 set expandtab
+
+"smart indent
+set smarttab
 set smartindent
 
 "highlight matching brace
@@ -245,33 +221,10 @@ set showmatch
 "Mario Bros lol! The screen move but the Mario still at the center.)
 "highlight matching brace
 " Keep n lines off the edges of the screen when scrolling
-set scrolloff=4
+set scrolloff=5
 
 "use %s/foo/bar instead of %s/foo/bar/g
 set gdefault
 
 "wrap lines that are too long
 set wrap
-
-
-
-
-"nnoremap n :call HighlightNearCursor()<CR> n 
-"nnoremap N N :call HighlightNearCursor()<CR>
-nnoremap t :call HighlightWordNearCursor()<CR>
-nnoremap T :set hlsearch!<CR>
-
-function HighlightNearCursor()
-    match Todo /\k*\%#\k*/
-    let s:highlightcursor=1
-endfunction
- 
-function HighlightWordNearCursor()
-   if !exists("s:highlightcursor")
-       match Todo /\k*\%#\k*/
-       let s:highlightcursor=1
-   else
-       match None
-       unlet s:highlightcursor
-   endif
-endfunction
