@@ -14,7 +14,6 @@ let mapleader=","
 let g:mapleader=","
 
 " easier Esc
-inoremap <Tab> <Esc>
 noremap <Tab> <Esc>
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,

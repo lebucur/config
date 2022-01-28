@@ -21,6 +21,8 @@ alias tl='~/.local/bin/tldr' #interactive tldr++
 alias tld='/usr/bin/tldr'    #tldr from apt
 alias mkdir='mkdir --parents --verbose'
 alias tree='tree -n'         #no colors
+alias gestures=libinput-gestures-setup
+alias pa-rec="sudo dpkg-reconfigure pulseaudio"
 
 #list
 alias l='ls --color=auto --classify'
@@ -59,7 +61,14 @@ alias a=./a.out
 #functions
 findf() 
 {
-    find 2>&1 -iname '*$1*' ${@:2} | grep -v 'Permission denied'
+    echo '*$1*'
+    find . -iname "*$1*"
+}
+
+diff()
+{
+    echo diff -y -W "$(tput cols) $1 $2" | less
+    diff -y -W "$(tput cols) $1 $2" | less
 }
 
 hi()
